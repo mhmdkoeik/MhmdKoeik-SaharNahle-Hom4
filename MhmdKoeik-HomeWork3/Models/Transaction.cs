@@ -18,5 +18,12 @@ namespace MhmdKoeik_HomeWork3.Models
         [Required]
         public int CheckingAccountId { get; set; }
         public virtual CheckingAccount CheckingAccount { get; set; }
+
+        [Required]
+        [Display(Name = "To Account #")]
+        public string TransactionSource { get; set; }
+
+        [DataType(DataType.DateTime)]
+        public string TransactionDate { get; set; }
     }
 }
