@@ -186,10 +186,6 @@
     <Compile Include="Migrations\202005101802324_droptable.Designer.cs">
       <DependentUpon>202005101802324_droptable.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202005101806333_transferTable.cs" />
-    <Compile Include="Migrations\202005101806333_transferTable.Designer.cs">
-      <DependentUpon>202005101806333_transferTable.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -289,9 +285,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202005101802324_droptable.resx">
       <DependentUpon>202005101802324_droptable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202005101806333_transferTable.resx">
-      <DependentUpon>202005101806333_transferTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
