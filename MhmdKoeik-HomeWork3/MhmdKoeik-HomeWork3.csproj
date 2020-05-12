@@ -263,6 +263,7 @@
     <Content Include="Views\Transaction\Withdrawal.cshtml" />
     <Content Include="Views\Transaction\_TransferSuccess.cshtml" />
     <Content Include="Views\Transaction\_TransferForm.cshtml" />
+    <Content Include="Views\Transaction\Transfer.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
