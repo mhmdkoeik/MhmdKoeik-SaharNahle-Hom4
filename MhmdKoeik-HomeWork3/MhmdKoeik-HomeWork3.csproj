@@ -264,6 +264,7 @@
     <Content Include="Views\Transaction\_TransferSuccess.cshtml" />
     <Content Include="Views\Transaction\_TransferForm.cshtml" />
     <Content Include="Views\Transaction\Transfer.cshtml" />
+    <Content Include="Views\Transaction\PrintStatement.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
