@@ -10,12 +10,22 @@
         <h4>Check Balance </h4>
         <hr />
         <dl class="dl-horizontal">
+
+            <dt>
+                @Html.DisplayNameFor(model => model.AccountNumber)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.AccountNumber)
+
+            </dd>
             <dt>
                 @Html.DisplayNameFor(model => model.Balance)
             </dt>
             <dd>
                 @Html.DisplayFor(model => model.Balance)
             </dd>
+
+
         </dl>
     </div>
 </div>
