@@ -131,9 +131,10 @@ namespace MhmdKoeik_HomeWork3.Controllers
             return PartialView("_TransferForm");
         }
 
-        public ActionResult PrintStatement(int checkingAccountId)
+        public ActionResult PrintStatement()
         {
-            var checkingAccount = db.CheckingAccounts.Find(checkingAccountId);
+            var userId = User.Identity.GetUserId();
+            var checkingAccount = db.CheckingAccounts.Where(c => c.ApplicationUserId == userId).First();
             return View(checkingAccount.Transactions.ToList());
         }
     }
