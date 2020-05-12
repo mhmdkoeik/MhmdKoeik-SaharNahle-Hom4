@@ -261,6 +261,7 @@
     <Content Include="Views\Transaction\Deposit.cshtml" />
     <Content Include="Views\Transaction\QuickCash.cshtml" />
     <Content Include="Views\Transaction\Withdrawal.cshtml" />
+    <Content Include="Views\Transaction\_TransferSuccess.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
