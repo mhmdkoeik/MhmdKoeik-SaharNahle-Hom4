@@ -10,7 +10,6 @@
             var $theForm = $(this);
             // manually trigger validation
             if ($theForm.valid()) {
-                $('#progress').show();
                 $.post('', $theForm.serialize())
                     .done(function (response) {
                         $theForm.replaceWith(response);

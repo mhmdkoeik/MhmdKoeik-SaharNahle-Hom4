@@ -57,7 +57,7 @@ namespace MhmdKoeik_HomeWork3.Controllers
             var balance = sourceCheckingAccount.Balance;
             if (balance < amount)
             {
-                return View("QuickCashInsufficientFunds");
+                return View("QuickCash");
             }
             db.Transactions.Add(new Transaction { CheckingAccountId = checkingAccountId, Amount = -amount , TransactionDate = DateTime.Now });
             db.SaveChanges();
