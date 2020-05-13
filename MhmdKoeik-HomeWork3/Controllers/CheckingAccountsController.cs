@@ -36,6 +36,11 @@ namespace MhmdKoeik_HomeWork3.Controllers
             return View(checkingAccount);
         }
 
+        public ActionResult PrintStatement(int id)
+        {
+            var checkingAccount = db.CheckingAccounts.Find(id);
+            return View(checkingAccount.Transactions.ToList());
+        }
         // GET: CheckingAccounts/Create
         public ActionResult Create()
         {

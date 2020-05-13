@@ -163,12 +163,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
-    <Compile Include="App_Start\BundleConfig2.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
-    <Compile Include="App_Start\FilterConfig2.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="App_Start\RouteConfig2.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CheckingAccountsController.cs" />
@@ -230,7 +227,13 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\knockout-3.5.1.debug.js" />
+    <Content Include="Scripts\knockout-3.5.1.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.matchmedia.addListener.js" />
+    <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
+    <Content Include="Scripts\respond.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -272,6 +275,7 @@
     <Content Include="Views\Transaction\_TransferForm.cshtml" />
     <Content Include="Views\Transaction\Transfer.cshtml" />
     <Content Include="Views\Transaction\PrintStatement.cshtml" />
+    <Content Include="Views\CheckingAccounts\PrintStatement.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Nasser\" />
