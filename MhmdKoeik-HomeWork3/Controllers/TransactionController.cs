@@ -85,7 +85,7 @@ namespace MhmdKoeik_HomeWork3.Controllers
             if (ModelState.IsValid)
             {
                 transaction.Amount = -transaction.Amount;
-                transaction.TransactioDate = DateTime.Now;
+                transaction.TransactionDate = DateTime.Now;
                 db.Transactions.Add(transaction);
                 db.SaveChanges();
 
