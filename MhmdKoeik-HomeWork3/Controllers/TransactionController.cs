@@ -40,6 +40,7 @@ namespace MhmdKoeik_HomeWork3.Controllers
         {
             if (ModelState.IsValid)
             {
+                transaction.TransactionDate = DateTime.Now;
                 db.Transactions.Add(transaction);
                 db.SaveChanges();
 
@@ -58,7 +59,7 @@ namespace MhmdKoeik_HomeWork3.Controllers
             {
                 return View("QuickCashInsufficientFunds");
             }
-            db.Transactions.Add(new Transaction { CheckingAccountId = checkingAccountId, Amount = -amount });
+            db.Transactions.Add(new Transaction { CheckingAccountId = checkingAccountId, Amount = -amount , TransactionDate = DateTime.Now });
             db.SaveChanges();
 
             var service = new CheckingAccountService(db);
@@ -84,6 +85,7 @@ namespace MhmdKoeik_HomeWork3.Controllers
             if (ModelState.IsValid)
             {
                 transaction.Amount = -transaction.Amount;
+                transaction.TransactioDate = DateTime.Now;
                 db.Transactions.Add(transaction);
                 db.SaveChanges();
 
@@ -118,8 +120,8 @@ namespace MhmdKoeik_HomeWork3.Controllers
             // add debit/credit transactions and update account balances
             if (ModelState.IsValid)
             {
-                db.Transactions.Add(new Transaction { CheckingAccountId = transfer.CheckingAccountId, Amount = -transfer.Amount });
-                db.Transactions.Add(new Transaction { CheckingAccountId = destinationCheckingAccount.Id, Amount = transfer.Amount });
+                db.Transactions.Add(new Transaction { CheckingAccountId = transfer.CheckingAccountId, Amount = -transfer.Amount, TransactionDate = DateTime.Now });
+                db.Transactions.Add(new Transaction { CheckingAccountId = destinationCheckingAccount.Id, Amount = transfer.Amount, TransactionDate = DateTime.Now });
                 db.SaveChanges();
 
                 var service = new CheckingAccountService(db);
