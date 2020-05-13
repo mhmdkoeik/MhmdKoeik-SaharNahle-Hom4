@@ -191,8 +191,6 @@
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\CheckingAccount.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\MHMDALI.cs" />
-    <Compile Include="Models\MustafaTamimiModelU.cs" />
     <Compile Include="Models\Transaction.cs" />
     <Compile Include="Models\Transfer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
