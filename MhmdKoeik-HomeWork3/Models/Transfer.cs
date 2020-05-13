@@ -19,7 +19,6 @@ namespace MhmdKoeik_HomeWork3.Models
         [Display(Name = "To Account #")]
         public string TransactionSource { get; set; }
 
-        [DataType(DataType.DateTime)]
-        public string TransactionDate{get; set;}
+       
     }
 }
