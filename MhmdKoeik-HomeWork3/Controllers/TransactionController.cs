@@ -38,10 +38,12 @@ namespace MhmdKoeik_HomeWork3.Controllers
         [HttpPost]
         public ActionResult Deposit(Transaction transaction)
         {
+            var userId = User.Identity.GetUserId();
+            var checkingAccount = db.CheckingAccounts.Where(c => c.ApplicationUserId == userId).First();
             if (ModelState.IsValid)
             {
                 transaction.TransactionDate = DateTime.Now;
-                transaction.Source = "owner";
+                transaction.Source = checkingAccount.Name;
                 db.Transactions.Add(transaction);
                 db.SaveChanges();
 
@@ -60,7 +62,7 @@ namespace MhmdKoeik_HomeWork3.Controllers
             {
                 return View("QuickCashInsufficientFunds");
             }
-            db.Transactions.Add(new Transaction { CheckingAccountId = checkingAccountId, Amount = -amount, TransactionDate = DateTime.Now, Source = "owner" });
+            db.Transactions.Add(new Transaction { CheckingAccountId = checkingAccountId, Amount = -amount, TransactionDate = DateTime.Now, Source = sourceCheckingAccount.Name });
             db.SaveChanges();
 
             var service = new CheckingAccountService(db);
@@ -87,7 +89,7 @@ namespace MhmdKoeik_HomeWork3.Controllers
             {
                 transaction.Amount = -transaction.Amount;
                 transaction.TransactionDate = DateTime.Now;
-                transaction.Source = "owner";
+                transaction.Source = checkingAccount.Name;
                 db.Transactions.Add(transaction);
                 db.SaveChanges();
 
