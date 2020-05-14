@@ -190,6 +190,10 @@
     <Compile Include="Migrations\202005132000031_date.Designer.cs">
       <DependentUpon>202005132000031_date.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202005141536598_Source.cs" />
+    <Compile Include="Migrations\202005141536598_Source.Designer.cs">
+      <DependentUpon>202005141536598_Source.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -305,6 +309,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202005132000031_date.resx">
       <DependentUpon>202005132000031_date.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005141536598_Source.resx">
+      <DependentUpon>202005141536598_Source.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
