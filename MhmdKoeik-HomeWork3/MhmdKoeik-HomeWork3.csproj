@@ -280,6 +280,8 @@
     <Content Include="Views\Transaction\Transfer.cshtml" />
     <Content Include="Views\Transaction\PrintStatement.cshtml" />
     <Content Include="Views\CheckingAccounts\PrintStatement.cshtml" />
+    <Content Include="Views\Transaction\AdminTransfer.cshtml" />
+    <Content Include="Views\Transaction\_AdminTransferForm.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

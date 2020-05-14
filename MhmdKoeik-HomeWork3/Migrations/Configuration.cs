@@ -25,10 +25,10 @@ namespace MhmdKoeik_HomeWork3.Migrations
             var userStore = new UserStore<ApplicationUser>(context);
             var userManager = new UserManager<ApplicationUser>(userStore);
 
-            if (!context.Users.Any(u => u.UserName == "admin@mvcatm.com"))
+            if (!context.Users.Any(u => u.UserName == "admin@admin.com"))
             {
-                var user = new ApplicationUser { UserName = "admin@mvcatm.com", Email = "admin@mvcatm.com" };
-                IdentityResult result = userManager.Create(user, "passW0rd!");
+                var user = new ApplicationUser { UserName = "admin@admin.com", Email = "admin@admin.com" };
+                IdentityResult result = userManager.Create(user, "password!");
 
                 var service = new CheckingAccountService(context);
                 service.CreateCheckingAccount("admin", "user", user.Id, 1000);

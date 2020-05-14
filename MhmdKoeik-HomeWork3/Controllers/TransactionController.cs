@@ -141,6 +141,17 @@ namespace MhmdKoeik_HomeWork3.Controllers
             return PartialView("_TransferForm");
         }
 
+
+        public ActionResult AdminTransfer(Transfer transfer)
+        {
+          
+            var acc = db.CheckingAccounts.Where(a => a.AccountNumber == transfer.TransactionSource).FirstOrDefault();
+            ViewBag.accounts = db.CheckingAccounts.Distinct().Select(i => new SelectListItem() { Text = i.AccountNumber, Value = i.AccountNumber.ToString() }).ToList();
+
+                return View(acc);
+            }
+
+
         public ActionResult PrintStatement()
         {
             var userId = User.Identity.GetUserId();

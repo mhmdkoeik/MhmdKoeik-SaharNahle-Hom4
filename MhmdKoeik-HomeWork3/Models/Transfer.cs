@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace MhmdKoeik_HomeWork3.Models
 {
@@ -19,6 +20,7 @@ namespace MhmdKoeik_HomeWork3.Models
         [Display(Name = "To Account #")]
         public string TransactionSource { get; set; }
 
-       
+        public IEnumerable<SelectListItem> accounts { get; set; }
+
     }
 }

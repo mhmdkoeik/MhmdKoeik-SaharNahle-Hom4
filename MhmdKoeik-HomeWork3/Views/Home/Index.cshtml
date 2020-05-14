@@ -10,7 +10,15 @@
     </div>
     <div class="col-md-6 margin-top-20">
         <a href="@Url.Action("PrintStatement", "Transaction", new { id= ViewBag.CheckingAccountId })" class="btn btn-warning btn-large btn-block"><span class="glyphicon glyphicon-print"></span> Print Statement</a>
-        <a href="@Url.Action("Transfer","Transaction",new { checkingAccountId = ViewBag.checkingAccountId })" class="btn btn-primary btn-large btn-block"><span class="glyphicon glyphicon-transfer"></span> Transfer Funds</a>
+        @if (!User.IsInRole("Admin"))
+        {
+            <a href="@Url.Action("Transfer","Transaction",new { checkingAccountId = ViewBag.checkingAccountId })" class="btn btn-primary btn-large btn-block"><span class="glyphicon glyphicon-transfer"></span> Transfer Funds</a>
+        }
+        else if (User.IsInRole("Admin"))
+        {
+            <a href="@Url.Action("AdminTransfer","Transaction",new { checkingAccountId = ViewBag.checkingAccountId })" class="btn btn-primary btn-large btn-block"><span class="glyphicon glyphicon-transfer"></span> Transfer Funds</a>
+
+        }
         <a href="@Url.Action("Deposit", "Transaction", new {checkingAccountId = ViewBag.CheckingAccountId})" class="btn btn-success btn-large btn-block"><span class="glyphicon glyphicon-circle-arrow-up"></span> Deposit</a>
     </div>
 </div>
