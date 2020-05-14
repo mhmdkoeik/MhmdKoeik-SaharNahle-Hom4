@@ -41,6 +41,7 @@ namespace MhmdKoeik_HomeWork3.Controllers
             if (ModelState.IsValid)
             {
                 transaction.TransactionDate = DateTime.Now;
+                transaction.Source = "owner";
                 db.Transactions.Add(transaction);
                 db.SaveChanges();
 
@@ -57,9 +58,9 @@ namespace MhmdKoeik_HomeWork3.Controllers
             var balance = sourceCheckingAccount.Balance;
             if (balance < amount)
             {
-                return View("QuickCash");
+                return View("QuickCashInsufficientFunds");
             }
-            db.Transactions.Add(new Transaction { CheckingAccountId = checkingAccountId, Amount = -amount , TransactionDate = DateTime.Now });
+            db.Transactions.Add(new Transaction { CheckingAccountId = checkingAccountId, Amount = -amount, TransactionDate = DateTime.Now, Source = "owner" });
             db.SaveChanges();
 
             var service = new CheckingAccountService(db);
@@ -86,6 +87,7 @@ namespace MhmdKoeik_HomeWork3.Controllers
             {
                 transaction.Amount = -transaction.Amount;
                 transaction.TransactionDate = DateTime.Now;
+                transaction.Source = "owner";
                 db.Transactions.Add(transaction);
                 db.SaveChanges();
 
@@ -104,6 +106,8 @@ namespace MhmdKoeik_HomeWork3.Controllers
         [HttpPost]
         public ActionResult Transfer(Transfer transfer)
         {
+
+            // check for available funds
             var sourceCheckingAccount = db.CheckingAccounts.Find(transfer.CheckingAccountId);
             if (sourceCheckingAccount.Balance < transfer.Amount)
             {
@@ -112,6 +116,8 @@ namespace MhmdKoeik_HomeWork3.Controllers
 
             // check for a valid destination account
             var destinationCheckingAccount = db.CheckingAccounts.Where(c => c.AccountNumber == transfer.TransactionSource).FirstOrDefault();
+            var userId = User.Identity.GetUserId();
+            var sourceAccount = db.CheckingAccounts.Where(c => c.ApplicationUserId == userId).FirstOrDefault();
             if (destinationCheckingAccount == null)
             {
                 ModelState.AddModelError("TransactionSource", "Invalid destination account number.");
@@ -120,8 +126,8 @@ namespace MhmdKoeik_HomeWork3.Controllers
             // add debit/credit transactions and update account balances
             if (ModelState.IsValid)
             {
-                db.Transactions.Add(new Transaction { CheckingAccountId = transfer.CheckingAccountId, Amount = -transfer.Amount, TransactionDate = DateTime.Now });
-                db.Transactions.Add(new Transaction { CheckingAccountId = destinationCheckingAccount.Id, Amount = transfer.Amount, TransactionDate = DateTime.Now });
+                db.Transactions.Add(new Transaction { CheckingAccountId = transfer.CheckingAccountId, Amount = -transfer.Amount, TransactionDate = DateTime.Now, Source = transfer.TransactionSource });
+                db.Transactions.Add(new Transaction { CheckingAccountId = destinationCheckingAccount.Id, Amount = transfer.Amount, TransactionDate = DateTime.Now, Source = sourceAccount.AccountNumber });
                 db.SaveChanges();
 
                 var service = new CheckingAccountService(db);
@@ -133,13 +139,12 @@ namespace MhmdKoeik_HomeWork3.Controllers
             return PartialView("_TransferForm");
         }
 
-
         public ActionResult PrintStatement()
         {
             var userId = User.Identity.GetUserId();
             var checkingAccount = db.CheckingAccounts.Where(c => c.ApplicationUserId == userId).First();
             return View(checkingAccount.Transactions.ToList());
+
         }
     }
-
 }

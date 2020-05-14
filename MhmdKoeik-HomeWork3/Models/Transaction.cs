@@ -20,5 +20,7 @@ namespace MhmdKoeik_HomeWork3.Models
         public virtual CheckingAccount CheckingAccount { get; set; }
 
         public DateTime ? TransactionDate { get; set; }
+
+        public string Source { get; set; } 
     }
 }
